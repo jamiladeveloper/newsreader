@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row toolbar">
+    <div class="col-md-6">
+      Category: <select (change)="updateCategory($event)">
+        <option value="0" selected>All</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <button (click)="openAddCategory()">Add New Category</button>
+    </div>
+    <div class="col-md-3">
+      <button (click)="openAddRss()">Add New Rss</button>
+    </div>
+  </div>
+  <div class="row">
+    
+  </div>
+  <div class="rssfeed">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let article of rssfeed">
+          <td>{{article.pubDate}}</td>
+          <td><a href="{{article.link}}">{{article.title}}</a></td>
+          <td>{{article.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<router-outlet></router-outlet>
